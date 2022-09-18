@@ -8,5 +8,5 @@ using Benchmark.Vectors;
 //x.VectorFloat2_Static_Bench();
 var summary = BenchmarkRunner.Run<Vector2Bench>();
 
-//Console.Write("End...");
-//Console.ReadLine();
+Console.Write("End...");
+Console.ReadLine();

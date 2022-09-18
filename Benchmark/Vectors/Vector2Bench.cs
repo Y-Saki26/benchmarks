@@ -410,6 +410,29 @@ namespace Benchmark.Vectors
             }
         }
 #else
+        [Benchmark]
+        public void Void() {
+            for(int i = 0; i < N; i++) {
+                double x = (double)i;
+                if(x == -1.0d)
+                    throw new Exception("assert error");
+            }
+        }
+
+        [Benchmark]
+        public void VoidContinue() {
+            for(int i = 0; i < N; i++) {
+                continue;
+            }
+        }
+
+        [Benchmark]
+        public void VoidVoid() {
+            for(int i = 0; i < N; i++) {
+                //continue;
+            }
+        }
+
         /// <summary>
         /// Benchmark of (double, double), using extension method
         /// </summary>
@@ -421,6 +444,51 @@ namespace Benchmark.Vectors
                 (double X, double Y) y = (0d, 1d).Multiple(i);
                 (double X, double Y) z = (1d, 1d).Multiple(i);
                 if(x.Add(y) != z)
+                    throw new Exception("assert error");
+            }
+        }
+
+        [Benchmark]
+        public void ValueTuple2MixFD_Bench() {
+            for(int i = 0; i < N; i++) {
+                (float X, double Y) x = (1f, 0d).Multiple(i);
+                (float X, double Y) y = (0f, 1d).Multiple(i);
+                (float X, double Y) z = (1f, 1d).Multiple(i);
+                if(x.Add(y) != z)
+                    throw new Exception("assert error");
+            }
+        }
+
+
+        [Benchmark]
+        public void ValueTuple2MixID_Bench() {
+            for(int i = 0; i < N; i++) {
+                (int X, double Y) x = (1, 0d).Multiple(i);
+                (int X, double Y) y = (0, 1d).Multiple(i);
+                (int X, double Y) z = (1, 1d).Multiple(i);
+                if(x.Add(y) != z)
+                    throw new Exception("assert error");
+            }
+        }
+
+        [Benchmark]
+        public void MyStructVector2MixFD_Bench() {
+            for(int i = 0; i < N; i++) {
+                var x = MyStructVector2MixFD.UnitX * i;
+                var y = MyStructVector2MixFD.UnitY * i;
+                var z = MyStructVector2MixFD.One * i;
+                if(x + y != z)
+                    throw new Exception("assert error");
+            }
+        }
+
+        [Benchmark]
+        public void MyStructVector2MixID_Bench() {
+            for(int i = 0; i < N; i++) {
+                var x = MyStructVector2MixID.UnitX * i;
+                var y = MyStructVector2MixID.UnitY * i;
+                var z = MyStructVector2MixID.One * i;
+                if(x + y != z)
                     throw new Exception("assert error");
             }
         }

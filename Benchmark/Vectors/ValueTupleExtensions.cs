@@ -2,6 +2,8 @@
 {
     using Vec2 = ValueTuple<double, double>;
     using Vec2f = ValueTuple<float, float>;
+    using Vec2mFD = ValueTuple<float, double>;
+    using Vec2mID = ValueTuple<int, double>;
     using Vec4 = ValueTuple<double, double, double, double>;
     using Vec4f = ValueTuple<float, float, float, float>;
     internal static class ValueTupleExtensions
@@ -24,6 +26,26 @@
             (left.Item1 + right.Item1, left.Item2 + right.Item2);
 
         public static Vec2f Multiple(this Vec2f left, float right) =>
+            (left.Item1 * right, left.Item2 * right);
+
+        // Vec2mFD
+        public static double X(this Vec2mFD @this) => @this.Item1;
+        public static double Y(this Vec2mFD @this) => @this.Item2;
+
+        public static Vec2mFD Add(this Vec2mFD left, Vec2mFD right) =>
+            (left.Item1 + right.Item1, left.Item2 + right.Item2);
+
+        public static Vec2mFD Multiple(this Vec2mFD left, float right) =>
+            (left.Item1 * right, left.Item2 * right);
+
+        // Vec2mID
+        public static double X(this Vec2mID @this) => @this.Item1;
+        public static double Y(this Vec2mID @this) => @this.Item2;
+
+        public static Vec2mID Add(this Vec2mID left, Vec2mID right) =>
+            (left.Item1 + right.Item1, left.Item2 + right.Item2);
+
+        public static Vec2mID Multiple(this Vec2mID left, int right) =>
             (left.Item1 * right, left.Item2 * right);
 
         // Vec4
