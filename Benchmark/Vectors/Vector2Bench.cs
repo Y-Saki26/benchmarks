@@ -1,4 +1,4 @@
-﻿#define SECOND_RUN
+﻿#define ADDITIONAL
 
 using System;
 using System.Numerics;
@@ -12,7 +12,7 @@ namespace Benchmark.Vectors
     /// </summary>
     //[MemoryDiagnoser]
     [AllStatisticsColumn]
-    [ShortRunJob]
+    //[ShortRunJob]
     public class Vector2Bench
     {
 #pragma warning disable IDE0059 // 値の不必要な代入
@@ -20,8 +20,7 @@ namespace Benchmark.Vectors
         [Params(10, 100, 1000)]
         public int N { get; set; }
 
-#if !SECOND_RUN
-        /*
+#if !ADDITIONAL
         /// <summary>
         /// Benchmark of System.Numerics.Vector2
         /// </summary>
@@ -51,22 +50,17 @@ namespace Benchmark.Vectors
                     throw new Exception("assert error");
             }
         }
-        */
 
-        /*
         /// <summary>
         /// Benchmark of Tuple<double, double>
         /// </summary>
         /// <exception cref="Exception"></exception>
         [Benchmark]
         public void Tuple2_Bench() {
-            var X = new Tuple<double, double>(1d, 0d);
-            var Y = new Tuple<double, double>(0d, 1d);
-            var One = new Tuple<double, double>(1d, 1d);
             for(int i = 0; i < N; i++) {
-                var x = X.Multiple(i);
-                var y = Y.Multiple(i);
-                var z = One.Multiple(i);
+                var x = new Tuple<double, double>(1d, 0d).Multiple(i);
+                var y = new Tuple<double, double>(0d, 1d).Multiple(i);
+                var z = new Tuple<double, double>(1d, 1d).Multiple(i);
                 if(!x.Add(y).Equals(z))
                     throw new Exception($"assert error: {x} + {y} = {x.Add(y)} != {z}");
             }
@@ -415,7 +409,6 @@ namespace Benchmark.Vectors
                     throw new Exception("assert error");
             }
         }
-        */
 #else
         /// <summary>
         /// Benchmark of (double, double), using extension method
@@ -434,12 +427,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void Vector2_Init_Bench() {
-            var X = Vector2.UnitX;
-            var Y = Vector2.UnitY;
+            var UnitX = Vector2.UnitX;
+            var UnitY = Vector2.UnitY;
             var One = Vector2.One;
             for(int i = 0; i < N; i++) {
-                var x = X * i;
-                var y = Y * i;
+                var x = UnitX * i;
+                var y = UnitY * i;
                 var z = One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -448,12 +441,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void UEVector2_Init_Bench() {
-            var X = UE.Vector2.right;
-            var Y = UE.Vector2.up;
+            var UnitX = UE.Vector2.right;
+            var UnitY = UE.Vector2.up;
             var One = UE.Vector2.one;
             for(int i = 0; i < N; i++) {
-                var x = X * i;
-                var y = Y * i;
+                var x = UnitX * i;
+                var y = UnitY * i;
                 var z = One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -463,16 +456,16 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void VectorFloat2_Bench() {
-            var X = new float[Vector<float>.Count];
-            X[0] = 1f;
-            var Y = new float[Vector<float>.Count];
-            Y[1] = 1f;
+            var UnitX = new float[Vector<float>.Count];
+            UnitX[0] = 1f;
+            var UnitY = new float[Vector<float>.Count];
+            UnitY[1] = 1f;
             var One = new float[Vector<float>.Count];
             One[0] = 1f;
             One[1] = 1f;
             for(int i = 0; i < N; i++) {
-                var x = new Vector<float>(X) * i;
-                var y = new Vector<float>(Y) * i;
+                var x = new Vector<float>(UnitX) * i;
+                var y = new Vector<float>(UnitY) * i;
                 var z = new Vector<float>(One) * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -481,16 +474,16 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void VectorDouble2_Bench() {
-            var X = new double[Vector<float>.Count];
-            X[0] = 1d;
-            var Y = new double[Vector<float>.Count];
-            Y[1] = 1d;
+            var UnitX = new double[Vector<float>.Count];
+            UnitX[0] = 1d;
+            var UnitY = new double[Vector<float>.Count];
+            UnitY[1] = 1d;
             var One = new double[Vector<float>.Count];
             One[0] = 1d;
             One[1] = 1d;
             for(int i = 0; i < N; i++) {
-                var x = new Vector<double>(X) * i;
-                var y = new Vector<double>(Y) * i;
+                var x = new Vector<double>(UnitX) * i;
+                var y = new Vector<double>(UnitY) * i;
                 var z = new Vector<double>(One) * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -499,17 +492,17 @@ namespace Benchmark.Vectors
 
         static Vector<float> VectorFloatX {
             get {
-                var X = new float[Vector<float>.Count];
-                X[0] = 1f;
-                return new Vector<float>(X);
+                var UnitX = new float[Vector<float>.Count];
+                UnitX[0] = 1f;
+                return new Vector<float>(UnitX);
             }
         }
 
         static Vector<float> VectorFloatY {
             get {
-                var Y = new float[Vector<float>.Count];
-                Y[1] = 1f;
-                return new Vector<float>(Y);
+                var UnitY = new float[Vector<float>.Count];
+                UnitY[1] = 1f;
+                return new Vector<float>(UnitY);
             }
         }
 
@@ -536,12 +529,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void VectorFloat2_Init_Bench() {
-            var X = VectorFloatX;
-            var Y = VectorFloatY;
+            var UnitX = VectorFloatX;
+            var UnitY = VectorFloatY;
             var One = VectorFloatOne;
             for(int i = 0; i < N; i++) {
-                var x = X * i;
-                var y = Y * i;
+                var x = UnitX * i;
+                var y = UnitY * i;
                 var z = One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -550,12 +543,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void Tuple2Float_Init_Bench() {
-            var X = new Tuple<float, float>(1f, 0f);
-            var Y = new Tuple<float, float>(0f, 1f);
+            var UnitX = new Tuple<float, float>(1f, 0f);
+            var UnitY = new Tuple<float, float>(0f, 1f);
             var One = new Tuple<float, float>(1f, 1f);
             for(int i = 0; i < N; i++) {
-                var x = X.Multiple(i);
-                var y = Y.Multiple(i);
+                var x = UnitX.Multiple(i);
+                var y = UnitY.Multiple(i);
                 var z = One.Multiple(i);
                 if(!x.Add(y).Equals(z))
                     throw new Exception($"assert error: {x} + {y} = {x.Add(y)} != {z}");
@@ -564,12 +557,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void ValueTuple2Float_Init_Bench() {
-            var X = (1f, 0f);
-            var Y = (0f, 1f);
+            var UnitX = (1f, 0f);
+            var UnitY = (0f, 1f);
             var One = (1f, 1f);
             for(int i = 0; i < N; i++) {
-                var x = X.Multiple(i);
-                var y = Y.Multiple(i);
+                var x = UnitX.Multiple(i);
+                var y = UnitY.Multiple(i);
                 var z = One.Multiple(i);
                 if(x.Add(y) != z)
                     throw new Exception("assert error");
@@ -578,12 +571,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void MyVector2Float_Init_Bench() {
-            var X = MyVector2Float.UnitX;
-            var Y = MyVector2Float.UnitY;
+            var UnitX = MyVector2Float.UnitX;
+            var UnitY = MyVector2Float.UnitY;
             var One = MyVector2Float.One;
             for(int i = 0; i < N; i++) {
-                var x = X * i;
-                var y = Y * i;
+                var x = UnitX * i;
+                var y = UnitY * i;
                 var z = One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -592,12 +585,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void MyStructVector2Float_Init_Bench() {
-            var X = MyStructVector2Float.UnitX;
-            var Y = MyStructVector2Float.UnitY;
+            var UnitX = MyStructVector2Float.UnitX;
+            var UnitY = MyStructVector2Float.UnitY;
             var One = MyStructVector2Float.One;
             for(int i = 0; i < N; i++) {
-                var x = X * i;
-                var y = Y * i;
+                var x = UnitX * i;
+                var y = UnitY * i;
                 var z = One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -606,12 +599,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void MyTupleVector2Float_Init_Bench() {
-            var X = MyTupleVector2Float.UnitX;
-            var Y = MyTupleVector2Float.UnitY;
+            var UnitX = MyTupleVector2Float.UnitX;
+            var UnitY = MyTupleVector2Float.UnitY;
             var One = MyTupleVector2Float.One;
             for(int i = 0; i < N; i++) {
-                var x = X * i;
-                var y = Y * i;
+                var x = UnitX * i;
+                var y = UnitY * i;
                 var z = One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
@@ -620,12 +613,12 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void ExtensionArray2_Init_Bench() {
-            var X = new[] { 1d, 0d };
-            var Y = new[] { 0d, 1d };
+            var UnitX = new[] { 1d, 0d };
+            var UnitY = new[] { 0d, 1d };
             var One = new[] { 1d, 1d };
             for(int i = 0; i < N; i++) {
-                double[] x = X.Multiple(i);
-                double[] y = Y.Multiple(i);
+                double[] x = UnitX.Multiple(i);
+                double[] y = UnitY.Multiple(i);
                 double[] z = One.Multiple(i);
                 if(!x.Add(y).EachEquals(z))
                     throw new Exception("assert error");
