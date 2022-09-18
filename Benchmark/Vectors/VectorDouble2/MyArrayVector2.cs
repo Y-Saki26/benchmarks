@@ -1,4 +1,4 @@
-﻿namespace Benchmark.Vectors
+﻿namespace Benchmark.Vectors.VectorDouble2
 {
     internal class MyArrayVector2: IVector2<MyArrayVector2>
     {

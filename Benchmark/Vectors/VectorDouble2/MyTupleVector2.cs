@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorDouble2
 {
     internal class MyTupleVector2: Tuple<double, double>, IVector2<MyTupleVector2>
     {

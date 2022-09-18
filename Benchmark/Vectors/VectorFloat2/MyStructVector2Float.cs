@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorFloat2
 {
     internal struct MyStructVector2Float: IVector2Float<MyStructVector2Float>
     {

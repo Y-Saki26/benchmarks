@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorFloat2
 {
     internal class MyTupleVector2Float: Tuple<float, float>, IVector2Float<MyTupleVector2Float>
     {

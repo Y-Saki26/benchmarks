@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorDouble2
 {
     internal class MyVector2: IVector2<MyVector2>
     {

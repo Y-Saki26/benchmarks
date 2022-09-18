@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorDouble2
 {
     internal struct MyStructVector2: IVector2<MyStructVector2>//, IComparable<MyStructVector2>, IFormattable
     {

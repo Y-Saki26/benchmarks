@@ -1,4 +1,4 @@
-﻿namespace Benchmark.Vectors
+﻿namespace Benchmark.Vectors.VectorFloat2
 {
     internal class MyArrayVector2Float: IVector2Float<MyArrayVector2Float>
     {
