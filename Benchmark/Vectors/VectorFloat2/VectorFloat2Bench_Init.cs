@@ -12,7 +12,7 @@ namespace Benchmark.Vectors.VectorFloat2
     //[MemoryDiagnoser]
     [AllStatisticsColumn]
     //[ShortRunJob]
-    public class VectorFloat2Bench_Init: VectorFloat2Bench_2
+    public class VectorFloat2Bench_Init: VectorFloat2Bench
     {
 #pragma warning disable IDE0059 // 値の不必要な代入
 #pragma warning disable IDE0042 // 変数の宣言を分解
@@ -92,6 +92,22 @@ namespace Benchmark.Vectors.VectorFloat2
             VectorT_UnitX = new Vector<float>(floatArray_UnitX);
             VectorT_UnitY = new Vector<float>(floatArray_UnitY);
             VectorT_One = new Vector<float>(floatArray_One);
+        }
+
+        [Benchmark]
+        public bool VectorT_Cotr() {
+            var x = new Vector<float>(floatArray_UnitX) * I;
+            var y = new Vector<float>(floatArray_UnitY) * I;
+            var z = new Vector<float>(floatArray_One) * I;
+            return x + y == z;
+        }
+
+        [Benchmark]
+        public bool VectorT_Init() {
+            var x = VectorT_UnitX * I;
+            var y = VectorT_UnitY * I;
+            var z = VectorT_One * I;
+            return x + y == z;
         }
 
         [Benchmark]

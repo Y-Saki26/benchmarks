@@ -9,7 +9,7 @@ Console.WriteLine("Whilch task? ( Float2 | Float2Short | Double2 )");
 var s = Console.ReadLine();
 switch(s) {
     case "Float2":
-        BenchmarkRunner.Run<VectorFloat2Bench_2>();
+        BenchmarkRunner.Run<VectorFloat2Bench_Init>();
         break;
     case "Float2Short":
         BenchmarkRunner.Run<VectorFloat2Bench_Short>();
