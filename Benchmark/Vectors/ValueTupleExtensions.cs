@@ -1,7 +1,7 @@
 ﻿namespace Benchmark.Vectors
 {
     using Vec2 = ValueTuple<double, double>;
-    using Vec2f = ValueTuple<float, float>;
+    using VecF2 = ValueTuple<float, float>;
     using Vec2mFD = ValueTuple<float, double>;
     using Vec2mID = ValueTuple<int, double>;
     using Vec4 = ValueTuple<double, double, double, double>;
@@ -13,20 +13,33 @@
         public static double Y(this Vec2 @this) => @this.Item2;
 
         public static Vec2 Add(this Vec2 left, Vec2 right) =>
-            (left.Item1 + right.Item1, left.Item2 + right.Item2);
+            (left.X() + right.X(), left.Y()+ right.Y());
 
         public static Vec2 Multiple(this Vec2 left, double right) =>
-            (left.Item1 * right, left.Item2 * right);
+            (left.X()* right, left.Y()* right);
 
-        // Vec2f
-        public static double X(this Vec2f @this) => @this.Item1;
-        public static double Y(this Vec2f @this) => @this.Item2;
 
-        public static Vec2f Add(this Vec2f left, Vec2f right) =>
+        // VecF2
+        public static float X(this VecF2 @this) => @this.Item1;
+        public static float Y(this VecF2 @this) => @this.Item2;
+
+        public static VecF2 Add(this VecF2 left, VecF2 right) =>
             (left.Item1 + right.Item1, left.Item2 + right.Item2);
 
-        public static Vec2f Multiple(this Vec2f left, float right) =>
+        public static VecF2 Multiple(this VecF2 left, float right) =>
             (left.Item1 * right, left.Item2 * right);
+
+        public static VecF2 Add_Method(this VecF2 left, VecF2 right) =>
+            (left.X() + right.X(), left.Y() + right.Y());
+
+        public static VecF2 Multiple_Method(this VecF2 left, float right) =>
+            (left.X() * right, left.Y() * right);
+
+        public static VecF2 VecF2_UnitX() => (1f, 0f);
+
+        public static VecF2 VecF2_UnitY() => (0f, 1f);
+
+        public static VecF2 VecF2_One() => (1f, 1f);
 
         // Vec2mFD
         public static double X(this Vec2mFD @this) => @this.Item1;

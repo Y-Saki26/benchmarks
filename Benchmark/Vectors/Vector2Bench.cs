@@ -2,6 +2,7 @@
 
 using System;
 using System.Numerics;
+using Benchmark.Vectors.VectorFloat2;
 using BenchmarkDotNet.Attributes;
 using UE = UnityEngine;
 
@@ -629,19 +630,19 @@ namespace Benchmark.Vectors
             var UnitY = (0f, 1f);
             var One = (1f, 1f);
             for(int i = 0; i < N; i++) {
-                var x = UnitX.Multiple(i);
-                var y = UnitY.Multiple(i);
-                var z = One.Multiple(i);
-                if(x.Add(y) != z)
+                var x = UnitX.Multiple_Method(i);
+                var y = UnitY.Multiple_Method(i);
+                var z = One.Multiple_Method(i);
+                if(x.Add_Method(y) != z)
                     throw new Exception("assert error");
             }
         }
 
         [Benchmark]
         public void MyVector2Float_Init_Bench() {
-            var UnitX = MyVector2Float.UnitX;
-            var UnitY = MyVector2Float.UnitY;
-            var One = MyVector2Float.One;
+            var UnitX = MyClassVectorF2.UnitX;
+            var UnitY = MyClassVectorF2.UnitY;
+            var One = MyClassVectorF2.One;
             for(int i = 0; i < N; i++) {
                 var x = UnitX * i;
                 var y = UnitY * i;
@@ -653,9 +654,9 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void MyStructVector2Float_Init_Bench() {
-            var UnitX = MyStructVector2Float.UnitX;
-            var UnitY = MyStructVector2Float.UnitY;
-            var One = MyStructVector2Float.One;
+            var UnitX = MyStructVectorF2.UnitX;
+            var UnitY = MyStructVectorF2.UnitY;
+            var One = MyStructVectorF2.One;
             for(int i = 0; i < N; i++) {
                 var x = UnitX * i;
                 var y = UnitY * i;
@@ -667,9 +668,9 @@ namespace Benchmark.Vectors
 
         [Benchmark]
         public void MyTupleVector2Float_Init_Bench() {
-            var UnitX = MyTupleVector2Float.UnitX;
-            var UnitY = MyTupleVector2Float.UnitY;
-            var One = MyTupleVector2Float.One;
+            var UnitX = MyTupleVectorF2.UnitX;
+            var UnitY = MyTupleVectorF2.UnitY;
+            var One = MyTupleVectorF2.One;
             for(int i = 0; i < N; i++) {
                 var x = UnitX * i;
                 var y = UnitY * i;

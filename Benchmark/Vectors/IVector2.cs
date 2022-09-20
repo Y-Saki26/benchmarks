@@ -19,7 +19,7 @@
 #pragma warning restore CS8618 // null 非許容のフィールドには、コンストラクターの終了時に null 以外の値が入っていなければなりません。Null 許容として宣言することをご検討ください。
 
     }
-    internal interface IVector2Float<T>: IEquatable<T>, IComparable<T>, IFormattable
+    internal interface IVectorF2<T>: IEquatable<T>, IComparable<T>, IFormattable
     {
         public float X { get; }
 

@@ -2,9 +2,9 @@
 
 namespace Benchmark.Vectors.VectorFloat2
 {
-    internal class MyVector2Float: IVector2Float<MyVector2Float>
+    internal class MyClassVectorF2: IVectorF2<MyClassVectorF2>
     {
-        public MyVector2Float(float x, float y) {
+        public MyClassVectorF2(float x, float y) {
             X = x;
             Y = y;
         }
@@ -15,22 +15,22 @@ namespace Benchmark.Vectors.VectorFloat2
 
         public float Y { get; }
 
-        public MyVector2Float Add(MyVector2Float other) => Add(this, other);
+        public MyClassVectorF2 Add(MyClassVectorF2 other) => Add(this, other);
 
-        public MyVector2Float Multiple(float other) => Multiple(this, other);
+        public MyClassVectorF2 Multiple(float other) => Multiple(this, other);
 
-        public static MyVector2Float Add(MyVector2Float left, MyVector2Float right) =>
+        public static MyClassVectorF2 Add(MyClassVectorF2 left, MyClassVectorF2 right) =>
             new(left.X + right.X, left.Y + right.Y);
 
-        public static MyVector2Float Multiple(MyVector2Float left, float right) =>
+        public static MyClassVectorF2 Multiple(MyClassVectorF2 left, float right) =>
             new(left.X * right, left.Y * right);
 
         // IEquatable
-        public bool Equals(MyVector2Float? other) =>
+        public bool Equals(MyClassVectorF2? other) =>
             other is not null && X == other.X && Y == other.Y;
 
         // IComparable
-        public int CompareTo(MyVector2Float? other) {
+        public int CompareTo(MyClassVectorF2? other) {
             if(other is null)
                 return 1;
             if(X < other.X || X == other.X && Y < other.Y)
@@ -50,10 +50,10 @@ namespace Benchmark.Vectors.VectorFloat2
         }
 
         // 演算子実装
-        public static MyVector2Float operator +(MyVector2Float left, MyVector2Float right) => Add(left, right);
-        public static MyVector2Float operator *(MyVector2Float left, float right) => Multiple(left, right);
-        public static bool operator ==(MyVector2Float left, MyVector2Float right) => left.Equals(right);
-        public static bool operator !=(MyVector2Float left, MyVector2Float right) => !left.Equals(right);
+        public static MyClassVectorF2 operator +(MyClassVectorF2 left, MyClassVectorF2 right) => Add(left, right);
+        public static MyClassVectorF2 operator *(MyClassVectorF2 left, float right) => Multiple(left, right);
+        public static bool operator ==(MyClassVectorF2 left, MyClassVectorF2 right) => left.Equals(right);
+        public static bool operator !=(MyClassVectorF2 left, MyClassVectorF2 right) => !left.Equals(right);
 
         public override bool Equals(object? obj) =>
             obj is not null && Equals(obj as MyVector2);
@@ -61,10 +61,10 @@ namespace Benchmark.Vectors.VectorFloat2
         public override int GetHashCode() => HashCode.Combine(X, Y);
 
         // Static Properties
-        public static MyVector2Float UnitX { get => new(1f, 0f); }
+        public static MyClassVectorF2 UnitX { get => new(1f, 0f); }
 
-        public static MyVector2Float UnitY { get => new(0f, 1f); }
+        public static MyClassVectorF2 UnitY { get => new(0f, 1f); }
 
-        public static MyVector2Float One { get => new(1f, 1f); }
+        public static MyClassVectorF2 One { get => new(1f, 1f); }
     }
 }
