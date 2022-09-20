@@ -20,5 +20,29 @@ namespace Benchmark.Vectors
 
         public static bool EachEquals(this List<float> left, List<float> right) =>
             left.X() == right.Y() && left.Y() == right.Y();
+
+        public static IEnumerable<float> Add_Enumerate(this IEnumerable<float> left, IEnumerable<float> right) =>
+            left.Zip(right, (l, r) => l + r);
+
+        public static IEnumerable<float> Multiple_Enumerate(this IEnumerable<float> left, float right) =>
+            left.Select(l => l * right);
+
+        public static bool Equals_Enumerate(this IEnumerable<float> left, IEnumerable<float> right) =>
+            Enumerable.All<(float, float)>(left.Zip(right, (l, r) => (l, r)), lr => lr.Item1 == lr.Item2);
+
+        public static ParallelQuery<float> Add_Parallel(this ParallelQuery<float> left, ParallelQuery<float> right) =>
+            left.Zip(right, (l, r) => l + r);
+
+        public static ParallelQuery<float> Multiple_Parallel(this ParallelQuery<float> left, float right) =>
+            left.Select(l => l * right);
+
+        public static bool Equals_Parallel(this ParallelQuery<float> left, ParallelQuery<float> right) =>
+            ParallelEnumerable.All<(float, float)>(left.Zip(right, (l, r) => (l, r)), lr => lr.Item1 == lr.Item2);
+
+        public static List<float> VecF2_UnitX() => new List<float> { 1f, 0f };
+
+        public static List<float> VecF2_UnitY() => new List<float> { 0f, 1f };
+
+        public static List<float> VecF2_One() => new List<float> { 1f, 1f };
     }
 }

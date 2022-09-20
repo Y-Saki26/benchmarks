@@ -12,7 +12,7 @@ namespace Benchmark.Vectors.VectorFloat2
     //[MemoryDiagnoser]
     [AllStatisticsColumn]
     //[ShortRunJob]
-    public class VectorFloat2Bench
+    public class VectorFloat2Bench_Depricated
     {
 #pragma warning disable IDE0059 // 値の不必要な代入
 #pragma warning disable IDE0042 // 変数の宣言を分解

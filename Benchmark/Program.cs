@@ -5,11 +5,14 @@ using Benchmark.Vectors;
 using Benchmark.Vectors.VectorFloat2;
 
 
-Console.WriteLine("Whilch task? ( Float2 | Double2 )");
+Console.WriteLine("Whilch task? ( Float2 | Float2Short | Double2 )");
 var s = Console.ReadLine();
 switch(s) {
     case "Float2":
-        BenchmarkRunner.Run<VectorFloat2Bench>();
+        BenchmarkRunner.Run<VectorFloat2Bench_2>();
+        break;
+    case "Float2Short":
+        BenchmarkRunner.Run<VectorFloat2Bench_Short>();
         break;
     case "Double2":
         BenchmarkRunner.Run<Vector2Bench>();
@@ -18,8 +21,6 @@ switch(s) {
         Console.WriteLine("Unexpected option entered.");
         break;
 }
-
-Console.WriteLine(new System.Numerics.Vector<float>(1f));
 
 Console.Write("End...");
 Console.ReadLine();
