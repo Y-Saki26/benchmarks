@@ -2,11 +2,14 @@
 
 using System;
 using System.Numerics;
+using Benchmark.Vectors.VectorExtensions;
 using Benchmark.Vectors.VectorFloat2;
+using Benchmark.Vectors.VectorFloatDouble;
+using Benchmark.Vectors.VectorIntDouble;
 using BenchmarkDotNet.Attributes;
 using UE = UnityEngine;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorDouble2
 {
     /// <summary>
     /// Benchmarks of `(1, 0) x i + (0, 1) x i == (1, 1) x i` for i in 0..N
@@ -14,7 +17,7 @@ namespace Benchmark.Vectors
     //[MemoryDiagnoser]
     [AllStatisticsColumn]
     //[ShortRunJob]
-    public class Vector2Bench
+    public class VectorDouble2Bench
     {
 #pragma warning disable IDE0059 // 値の不必要な代入
 #pragma warning disable IDE0042 // 変数の宣言を分解
@@ -414,7 +417,7 @@ namespace Benchmark.Vectors
         [Benchmark]
         public void Void() {
             for(int i = 0; i < N; i++) {
-                double x = (double)i;
+                double x = i;
                 if(x == -1.0d)
                     throw new Exception("assert error");
             }
@@ -475,9 +478,9 @@ namespace Benchmark.Vectors
         [Benchmark]
         public void MyStructVector2MixFD_Bench() {
             for(int i = 0; i < N; i++) {
-                var x = MyStructVector2MixFD.UnitX * i;
-                var y = MyStructVector2MixFD.UnitY * i;
-                var z = MyStructVector2MixFD.One * i;
+                var x = MyStructVectorFD.UnitX * i;
+                var y = MyStructVectorFD.UnitY * i;
+                var z = MyStructVectorFD.One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
             }
@@ -486,9 +489,9 @@ namespace Benchmark.Vectors
         [Benchmark]
         public void MyStructVector2MixID_Bench() {
             for(int i = 0; i < N; i++) {
-                var x = MyStructVector2MixID.UnitX * i;
-                var y = MyStructVector2MixID.UnitY * i;
-                var z = MyStructVector2MixID.One * i;
+                var x = MyStructVectorID.UnitX * i;
+                var y = MyStructVectorID.UnitY * i;
+                var z = MyStructVectorID.One * i;
                 if(x + y != z)
                     throw new Exception("assert error");
             }

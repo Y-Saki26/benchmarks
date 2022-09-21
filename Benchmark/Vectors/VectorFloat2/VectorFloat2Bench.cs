@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Numerics;
+using Benchmark.Vectors.VectorExtensions;
 using BenchmarkDotNet.Attributes;
 using SN = System.Numerics;
 using UE = UnityEngine;
+using TupleExtensions = Benchmark.Vectors.VectorExtensions.TupleExtensions;
 
 namespace Benchmark.Vectors.VectorFloat2
 {

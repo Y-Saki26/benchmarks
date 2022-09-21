@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorExtensions
 {
     internal static class VectorTExtends
     {

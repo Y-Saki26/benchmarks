@@ -1,4 +1,4 @@
-﻿namespace Benchmark.Vectors
+﻿namespace Benchmark.Vectors.VectorExtensions
 {
     internal static class TupleExtensions
     {

@@ -1,9 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
 using BenchmarkDotNet.Running;
-using Benchmark.Vectors;
 using Benchmark.Vectors.VectorFloat2;
-
+using Benchmark.Vectors.VectorDouble2;
 
 Console.WriteLine("Whilch task? ( Float2 | Float2Short | Double2 )");
 var s = Console.ReadLine();
@@ -15,7 +14,7 @@ switch(s) {
         BenchmarkRunner.Run<VectorFloat2Bench_Short>();
         break;
     case "Double2":
-        BenchmarkRunner.Run<Vector2Bench>();
+        BenchmarkRunner.Run<VectorDouble2Bench>();
         break;
     default:
         Console.WriteLine("Unexpected option entered.");

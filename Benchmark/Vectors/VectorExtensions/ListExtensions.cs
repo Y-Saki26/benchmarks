@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Benchmark.Vectors
+namespace Benchmark.Vectors.VectorExtensions
 {
     internal static class ListExtensions
     {
-        public static float X(this List<float> @this) => (@this.Count >= 1) ? @this[0] : float.NegativeInfinity;
+        public static float X(this List<float> @this) => @this.Count >= 1 ? @this[0] : float.NegativeInfinity;
 
-        public static float Y(this List<float> @this) => (@this.Count >= 2) ? @this[1] : float.NegativeInfinity;
+        public static float Y(this List<float> @this) => @this.Count >= 2 ? @this[1] : float.NegativeInfinity;
 
         public static List<float> Add(this List<float> left, List<float> right) =>
             new() { left.X() + right.X(), left.Y() + right.Y() };
@@ -28,7 +28,7 @@ namespace Benchmark.Vectors
             left.Select(l => l * right);
 
         public static bool Equals_Enumerate(this IEnumerable<float> left, IEnumerable<float> right) =>
-            Enumerable.All<(float, float)>(left.Zip(right, (l, r) => (l, r)), lr => lr.Item1 == lr.Item2);
+            left.Zip(right, (l, r) => (l, r)).All<(float, float)>(lr => lr.Item1 == lr.Item2);
 
         public static ParallelQuery<float> Add_Parallel(
                 this ParallelQuery<float> left, ParallelQuery<float> right) =>

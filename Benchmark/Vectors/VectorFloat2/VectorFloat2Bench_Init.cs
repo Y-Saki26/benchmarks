@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Benchmark.Vectors.VectorExtensions;
 using BenchmarkDotNet.Attributes;
 using SN = System.Numerics;
 using UE = UnityEngine;

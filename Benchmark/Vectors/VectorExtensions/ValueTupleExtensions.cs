@@ -1,4 +1,4 @@
-﻿namespace Benchmark.Vectors
+﻿namespace Benchmark.Vectors.VectorExtensions
 {
     using VecF2 = ValueTuple<float, float>;
     using VecD2 = ValueTuple<double, double>;
@@ -6,6 +6,7 @@
     using VecID = ValueTuple<int, double>;
     using VecF4 = ValueTuple<float, float, float, float>;
     using VecD4 = ValueTuple<double, double, double, double>;
+
     internal static class ValueTupleExtensions
     {
         // VecF2
@@ -35,10 +36,10 @@
         public static double Y(this VecD2 @this) => @this.Item2;
 
         public static VecD2 Add(this VecD2 left, VecD2 right) =>
-            (left.X() + right.X(), left.Y()+ right.Y());
+            (left.X() + right.X(), left.Y() + right.Y());
 
         public static VecD2 Multiple(this VecD2 left, double right) =>
-            (left.X()* right, left.Y()* right);
+            (left.X() * right, left.Y() * right);
 
 
         // VecFD
