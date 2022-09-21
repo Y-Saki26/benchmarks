@@ -17,4 +17,4 @@ Zennにて結果のまとめを公開中．
 + 各データ構造(class/struct)の定義：
   [Benchmark/Vectors/VectorFloat2/*VectorF2.cs](https://github.com/Y-Saki26/benchmarks/tree/main/Benchmark/Vectors/VectorFloat2)
 + 拡張メソッドの定義：
-  [Benchmark/Vectors/VectorExtensions/*Extensions.cs](https://github.com/Y-Saki26/benchmarks/tree/main/Benchmark/Vectors)
+  [Benchmark/Vectors/VectorExtensions/*Extensions.cs](https://github.com/Y-Saki26/benchmarks/tree/main/Benchmark/Vectors/VectorExtensions)

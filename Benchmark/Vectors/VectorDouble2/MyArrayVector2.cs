@@ -1,4 +1,6 @@
-﻿namespace Benchmark.Vectors.VectorDouble2
+﻿using Benchmark.Vectors.VectorFloat2;
+
+namespace Benchmark.Vectors.VectorDouble2
 {
     internal class MyArrayVector2: IVector2<MyArrayVector2>
     {

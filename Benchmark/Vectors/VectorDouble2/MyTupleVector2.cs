@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Benchmark.Vectors.VectorFloat2;
+using System;
 
 namespace Benchmark.Vectors.VectorDouble2
 {
