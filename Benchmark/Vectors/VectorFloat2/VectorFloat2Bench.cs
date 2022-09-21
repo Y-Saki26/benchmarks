@@ -159,17 +159,25 @@ namespace Benchmark.Vectors.VectorFloat2
 
         // ゼロ確認
         [Benchmark]
-        public bool Void() {
+        public bool Vain() {
             float x = (float)I;
             return x == -1.0f;
         }
 
         [Benchmark]
-        public void VoidVoid() {
+        public void Void() {
             //continue;
         }
 
         // 最適化されるかどうかの確認
+        [Benchmark]
+        public void Vector2_NoReturn() {
+            var x = SN::Vector2.UnitX * I;
+            var y = SN::Vector2.UnitY * I;
+            var z = SN::Vector2.One * I;
+            var w = x + y == z;
+        }
+
         [Benchmark]
         public (Vector2, Vector2) Vector2_NoCompare() {
             var x = SN::Vector2.UnitX * I;
@@ -183,6 +191,22 @@ namespace Benchmark.Vectors.VectorFloat2
             var x = SN::Vector2.UnitX * I;
             var y = SN::Vector2.UnitY * I;
             var z = SN::Vector2.One * I;
+            return (x, y, z);
+        }
+
+        [Benchmark]
+        public ((float X, float Y), (float X, float Y)) ValueTuple_NoCompare() {
+            (float X, float Y) x = (1f, 0f).Multiple(I);
+            (float X, float Y) y = (0f, 1f).Multiple(I);
+            (float X, float Y) z = (1f, 1f).Multiple(I);
+            return (x.Add(y), z);
+        }
+
+        [Benchmark]
+        public ((float X, float Y), (float X, float Y), (float X, float Y)) ValueTuple_NoAdd() {
+            (float X, float Y) x = (1f, 0f).Multiple(I);
+            (float X, float Y) y = (0f, 1f).Multiple(I);
+            (float X, float Y) z = (1f, 1f).Multiple(I);
             return (x, y, z);
         }
 
@@ -203,7 +227,7 @@ namespace Benchmark.Vectors.VectorFloat2
             (left.Item1 * right, left.Item2 * right);
 
         [Benchmark]
-        public bool ValueTuple_Raw1() {
+        public bool ValueTuple_Literal() {
             (float X, float Y) x = (1f, 0f).Multiple(I);
             (float X, float Y) y = (0f, 1f).Multiple(I);
             (float X, float Y) z = (1f, 1f).Multiple(I);
@@ -211,7 +235,7 @@ namespace Benchmark.Vectors.VectorFloat2
         }
 
         [Benchmark]
-        public bool ValueTuple_Raw2() {
+        public bool ValueTuple_Raw() {
             (float X, float Y) x = (1f, 0f);
             x.X *= I;
             x.Y *= I;
@@ -222,22 +246,6 @@ namespace Benchmark.Vectors.VectorFloat2
             z.X *= I;
             z.Y *= I;
             return (x.X + y.X, x.Y + y.Y) == z;
-        }
-
-        [Benchmark]
-        public ((float X, float Y), (float X, float Y)) ValueTuple_NoCompare() {
-            (float X, float Y) x = (1f, 0f).Multiple(I);
-            (float X, float Y) y = (0f, 1f).Multiple(I);
-            (float X, float Y) z = (1f, 1f).Multiple(I);
-            return (x.Add(y), z);
-        }
-
-        [Benchmark]
-        public ((float X, float Y), (float X, float Y), (float X, float Y)) ValueTuple_NoAdd() {
-            (float X, float Y) x = (1f, 0f).Multiple(I);
-            (float X, float Y) y = (0f, 1f).Multiple(I);
-            (float X, float Y) z = (1f, 1f).Multiple(I);
-            return (x, y, z);
         }
 
         [Benchmark]
@@ -260,11 +268,11 @@ namespace Benchmark.Vectors.VectorFloat2
         }
 
         [Benchmark]
-        public bool ValueTuple_ExtendDetour() {
-            var x = ValueTupleExtensions.VecF2_UnitX().Multiple_Method(I);
-            var y = ValueTupleExtensions.VecF2_UnitY().Multiple_Method(I);
-            var z = ValueTupleExtensions.VecF2_One().Multiple_Method(I);
-            return x.Add_Method(y) == z;
+        public bool ValueTuple_Property() {
+            var x = ValueTupleExtensions.VecF2_UnitX().Multiple_Property(I);
+            var y = ValueTupleExtensions.VecF2_UnitY().Multiple_Property(I);
+            var z = ValueTupleExtensions.VecF2_One().Multiple_Property(I);
+            return x.Add_Property(y) == z;
         }
 
         // インスタンスメソッドとクラスメソッドの呼び出しの差

@@ -261,10 +261,10 @@ namespace Benchmark.Vectors.VectorFloat2
         [Benchmark]
         public void ValueTuple_ExtendDetour_Bench() {
             for(int i = 0; i < N; i++) {
-                var x = ValueTupleExtensions.VecF2_UnitX().Multiple_Method(i);
-                var y = ValueTupleExtensions.VecF2_UnitY().Multiple_Method(i);
-                var z = ValueTupleExtensions.VecF2_One().Multiple_Method(i);
-                if(x.Add_Method(y) != z)
+                var x = ValueTupleExtensions.VecF2_UnitX().Multiple_Property(i);
+                var y = ValueTupleExtensions.VecF2_UnitY().Multiple_Property(i);
+                var z = ValueTupleExtensions.VecF2_One().Multiple_Property(i);
+                if(x.Add_Property(y) != z)
                     throw new Exception("assert error");
             }
         }
@@ -405,10 +405,10 @@ namespace Benchmark.Vectors.VectorFloat2
             var UnitY = (0f, 1f);
             var One = (1f, 1f);
             for(int i = 0; i < N; i++) {
-                var x = UnitX.Multiple_Method(i);
-                var y = UnitY.Multiple_Method(i);
-                var z = One.Multiple_Method(i);
-                if(x.Add_Method(y) != z)
+                var x = UnitX.Multiple_Property(i);
+                var y = UnitY.Multiple_Property(i);
+                var z = One.Multiple_Property(i);
+                if(x.Add_Property(y) != z)
                     throw new Exception("assert error");
             }
         }

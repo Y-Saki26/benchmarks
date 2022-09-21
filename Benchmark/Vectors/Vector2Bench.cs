@@ -630,10 +630,10 @@ namespace Benchmark.Vectors
             var UnitY = (0f, 1f);
             var One = (1f, 1f);
             for(int i = 0; i < N; i++) {
-                var x = UnitX.Multiple_Method(i);
-                var y = UnitY.Multiple_Method(i);
-                var z = One.Multiple_Method(i);
-                if(x.Add_Method(y) != z)
+                var x = UnitX.Multiple_Property(i);
+                var y = UnitY.Multiple_Property(i);
+                var z = One.Multiple_Property(i);
+                if(x.Add_Property(y) != z)
                     throw new Exception("assert error");
             }
         }
