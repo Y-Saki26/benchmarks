@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmark.Vectors.VectorFloat2.VectorFloat2Bench-20220921-164846</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22000.918/21H2)
+Intel Core i7-10700T CPU 2.00GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK=6.0.302
+  [Host]     : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+  DefaultJob : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>     Method</th><th>   I</th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Median</th><th>Min</th><th> Q1</th><th> Q3</th><th>Max</th><th>         Op/s</th>
+</tr>
+</thead><tbody><tr><td>Vector2</td><td>0</td><td>1.1207 ns</td><td>0.0244 ns</td><td>0.0228 ns</td><td>0.0059 ns</td><td>1.1170 ns</td><td>1.0909 ns</td><td>1.1034 ns</td><td>1.1382 ns</td><td>1.1652 ns</td><td>892,285,581.2</td>
+</tr><tr><td>Void</td><td>0</td><td>0.2699 ns</td><td>0.0084 ns</td><td>0.0079 ns</td><td>0.0020 ns</td><td>0.2696 ns</td><td>0.2574 ns</td><td>0.2662 ns</td><td>0.2744 ns</td><td>0.2830 ns</td><td>3,704,715,265.2</td>
+</tr><tr><td>VoidVoid</td><td>0</td><td>0.0011 ns</td><td>0.0040 ns</td><td>0.0033 ns</td><td>0.0009 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0119 ns</td><td>931,371,017,401.5</td>
+</tr><tr><td>Vector2_Noreturen</td><td>0</td><td>0.0058 ns</td><td>0.0100 ns</td><td>0.0093 ns</td><td>0.0024 ns</td><td>0.0011 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0093 ns</td><td>0.0305 ns</td><td>171,133,143,635.5</td>
+</tr><tr><td>Vector2_NoCompare</td><td>0</td><td>0.7346 ns</td><td>0.0355 ns</td><td>0.0332 ns</td><td>0.0086 ns</td><td>0.7351 ns</td><td>0.6718 ns</td><td>0.7218 ns</td><td>0.7641 ns</td><td>0.7728 ns</td><td>1,361,237,831.2</td>
+</tr><tr><td>Vector2_NoAdd</td><td>0</td><td>0.6729 ns</td><td>0.0316 ns</td><td>0.0295 ns</td><td>0.0076 ns</td><td>0.6674 ns</td><td>0.6138 ns</td><td>0.6583 ns</td><td>0.6946 ns</td><td>0.7249 ns</td><td>1,486,162,608.6</td>
+</tr><tr><td>Vector2</td><td>1</td><td>1.0643 ns</td><td>0.0236 ns</td><td>0.0210 ns</td><td>0.0056 ns</td><td>1.0666 ns</td><td>1.0229 ns</td><td>1.0584 ns</td><td>1.0745 ns</td><td>1.0992 ns</td><td>939,561,373.1</td>
+</tr><tr><td>Void</td><td>1</td><td>0.1823 ns</td><td>0.0355 ns</td><td>0.0509 ns</td><td>0.0096 ns</td><td>0.1591 ns</td><td>0.1371 ns</td><td>0.1520 ns</td><td>0.1839 ns</td><td>0.3187 ns</td><td>5,486,151,758.5</td>
+</tr><tr><td>VoidVoid</td><td>1</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>Infinity</td>
+</tr><tr><td>Vector2_Noreturen</td><td>1</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>Infinity</td>
+</tr><tr><td>Vector2_NoCompare</td><td>1</td><td>0.7195 ns</td><td>0.0221 ns</td><td>0.0207 ns</td><td>0.0053 ns</td><td>0.7274 ns</td><td>0.6831 ns</td><td>0.7035 ns</td><td>0.7334 ns</td><td>0.7487 ns</td><td>1,389,899,910.4</td>
+</tr><tr><td>Vector2_NoAdd</td><td>1</td><td>0.7539 ns</td><td>0.0204 ns</td><td>0.0191 ns</td><td>0.0049 ns</td><td>0.7591 ns</td><td>0.7148 ns</td><td>0.7425 ns</td><td>0.7666 ns</td><td>0.7769 ns</td><td>1,326,399,623.8</td>
+</tr><tr><td>Vector2</td><td>2</td><td>1.0825 ns</td><td>0.0138 ns</td><td>0.0116 ns</td><td>0.0032 ns</td><td>1.0857 ns</td><td>1.0607 ns</td><td>1.0737 ns</td><td>1.0895 ns</td><td>1.1002 ns</td><td>923,811,019.2</td>
+</tr><tr><td>Void</td><td>2</td><td>0.2912 ns</td><td>0.0077 ns</td><td>0.0072 ns</td><td>0.0019 ns</td><td>0.2911 ns</td><td>0.2783 ns</td><td>0.2872 ns</td><td>0.2945 ns</td><td>0.3046 ns</td><td>3,434,034,074.6</td>
+</tr><tr><td>VoidVoid</td><td>2</td><td>0.0015 ns</td><td>0.0055 ns</td><td>0.0049 ns</td><td>0.0013 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0002 ns</td><td>0.0184 ns</td><td>668,926,573,752.7</td>
+</tr><tr><td>Vector2_Noreturen</td><td>2</td><td>0.0088 ns</td><td>0.0089 ns</td><td>0.0083 ns</td><td>0.0021 ns</td><td>0.0075 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0125 ns</td><td>0.0265 ns</td><td>114,106,625,443.3</td>
+</tr><tr><td>Vector2_NoCompare</td><td>2</td><td>0.6722 ns</td><td>0.0257 ns</td><td>0.0241 ns</td><td>0.0062 ns</td><td>0.6747 ns</td><td>0.6317 ns</td><td>0.6600 ns</td><td>0.6850 ns</td><td>0.7210 ns</td><td>1,487,630,116.3</td>
+</tr><tr><td>Vector2_NoAdd</td><td>2</td><td>0.6757 ns</td><td>0.0384 ns</td><td>0.0359 ns</td><td>0.0093 ns</td><td>0.6808 ns</td><td>0.6213 ns</td><td>0.6412 ns</td><td>0.6955 ns</td><td>0.7406 ns</td><td>1,479,990,927.2</td>
+</tr><tr><td>Vector2</td><td>12</td><td>1.0443 ns</td><td>0.0436 ns</td><td>0.0408 ns</td><td>0.0105 ns</td><td>1.0361 ns</td><td>0.9789 ns</td><td>1.0240 ns</td><td>1.0669 ns</td><td>1.1265 ns</td><td>957,533,992.2</td>
+</tr><tr><td>Void</td><td>12</td><td>0.2764 ns</td><td>0.0146 ns</td><td>0.0122 ns</td><td>0.0034 ns</td><td>0.2730 ns</td><td>0.2629 ns</td><td>0.2689 ns</td><td>0.2824 ns</td><td>0.3037 ns</td><td>3,617,480,064.2</td>
+</tr><tr><td>VoidVoid</td><td>12</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>Infinity</td>
+</tr><tr><td>Vector2_Noreturen</td><td>12</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>Infinity</td>
+</tr><tr><td>Vector2_NoCompare</td><td>12</td><td>0.6803 ns</td><td>0.0275 ns</td><td>0.0257 ns</td><td>0.0066 ns</td><td>0.6856 ns</td><td>0.6372 ns</td><td>0.6591 ns</td><td>0.6931 ns</td><td>0.7242 ns</td><td>1,469,868,049.1</td>
+</tr><tr><td>Vector2_NoAdd</td><td>12</td><td>0.6674 ns</td><td>0.0237 ns</td><td>0.0210 ns</td><td>0.0056 ns</td><td>0.6736 ns</td><td>0.6203 ns</td><td>0.6581 ns</td><td>0.6811 ns</td><td>0.6966 ns</td><td>1,498,427,044.4</td>
+</tr><tr><td>Vector2</td><td>123</td><td>1.0617 ns</td><td>0.0356 ns</td><td>0.0333 ns</td><td>0.0086 ns</td><td>1.0713 ns</td><td>0.9957 ns</td><td>1.0346 ns</td><td>1.0856 ns</td><td>1.1232 ns</td><td>941,849,336.8</td>
+</tr><tr><td>Void</td><td>123</td><td>0.2560 ns</td><td>0.0074 ns</td><td>0.0066 ns</td><td>0.0018 ns</td><td>0.2569 ns</td><td>0.2463 ns</td><td>0.2503 ns</td><td>0.2595 ns</td><td>0.2685 ns</td><td>3,905,848,987.7</td>
+</tr><tr><td>VoidVoid</td><td>123</td><td>0.0035 ns</td><td>0.0080 ns</td><td>0.0086 ns</td><td>0.0020 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0272 ns</td><td>287,706,175,469.7</td>
+</tr><tr><td>Vector2_Noreturen</td><td>123</td><td>0.0072 ns</td><td>0.0125 ns</td><td>0.0111 ns</td><td>0.0030 ns</td><td>0.0010 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0095 ns</td><td>0.0318 ns</td><td>138,557,292,929.8</td>
+</tr><tr><td>Vector2_NoCompare</td><td>123</td><td>0.7441 ns</td><td>0.0217 ns</td><td>0.0181 ns</td><td>0.0050 ns</td><td>0.7504 ns</td><td>0.7072 ns</td><td>0.7390 ns</td><td>0.7561 ns</td><td>0.7676 ns</td><td>1,343,855,962.8</td>
+</tr><tr><td>Vector2_NoAdd</td><td>123</td><td>0.7648 ns</td><td>0.0264 ns</td><td>0.0247 ns</td><td>0.0064 ns</td><td>0.7689 ns</td><td>0.7187 ns</td><td>0.7459 ns</td><td>0.7844 ns</td><td>0.7948 ns</td><td>1,307,490,982.5</td>
+</tr><tr><td>Vector2</td><td>2147483647</td><td>1.0541 ns</td><td>0.0236 ns</td><td>0.0209 ns</td><td>0.0056 ns</td><td>1.0549 ns</td><td>1.0171 ns</td><td>1.0480 ns</td><td>1.0686 ns</td><td>1.0860 ns</td><td>948,691,036.6</td>
+</tr><tr><td>Void</td><td>2147483647</td><td>0.2627 ns</td><td>0.0078 ns</td><td>0.0070 ns</td><td>0.0019 ns</td><td>0.2630 ns</td><td>0.2498 ns</td><td>0.2591 ns</td><td>0.2678 ns</td><td>0.2725 ns</td><td>3,807,299,254.5</td>
+</tr><tr><td>VoidVoid</td><td>2147483647</td><td>0.0009 ns</td><td>0.0025 ns</td><td>0.0024 ns</td><td>0.0006 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0074 ns</td><td>1,066,122,601,143.8</td>
+</tr><tr><td>Vector2_Noreturen</td><td>2147483647</td><td>0.0044 ns</td><td>0.0061 ns</td><td>0.0054 ns</td><td>0.0014 ns</td><td>0.0023 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0066 ns</td><td>0.0153 ns</td><td>227,032,784,433.1</td>
+</tr><tr><td>Vector2_NoCompare</td><td>2147483647</td><td>0.7733 ns</td><td>0.0402 ns</td><td>0.0357 ns</td><td>0.0095 ns</td><td>0.7773 ns</td><td>0.7011 ns</td><td>0.7545 ns</td><td>0.8002 ns</td><td>0.8232 ns</td><td>1,293,175,489.2</td>
+</tr><tr><td>Vector2_NoAdd</td><td>2147483647</td><td>0.7602 ns</td><td>0.0281 ns</td><td>0.0263 ns</td><td>0.0068 ns</td><td>0.7733 ns</td><td>0.7112 ns</td><td>0.7409 ns</td><td>0.7821 ns</td><td>0.7847 ns</td><td>1,315,478,718.6</td>
+</tr></tbody></table>
+</body>
+</html>
